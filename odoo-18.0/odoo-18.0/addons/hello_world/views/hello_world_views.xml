@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Định nghĩa view dạng list -->
+    <record id="hello_world_tree_view" model="ir.ui.view">
+        <field name="name">hello.world.tree</field>
+        <field name="model">hello.world</field>
+        <field name="type">list</field>  <!-- Đã đổi thành 'list' trước đó -->
+        <field name="arch" type="xml">
+            <list>  <!-- Thay <tree> thành <list> -->
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Định nghĩa view dạng form -->
+    <record id="hello_world_form_view" model="ir.ui.view">
+        <field name="name">hello.world.form</field>
+        <field name="model">hello.world</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Định nghĩa action để mở view -->
+    <record id="hello_world_action" model="ir.actions.act_window">
+        <field name="name">Hello World</field>
+        <field name="res_model">hello.world</field>
+        <field name="view_mode">list,form</field>  <!-- Đổi 'tree' thành 'list' -->
+    </record>
+
+    <!-- Định nghĩa menu -->
+    <menuitem id="hello_world_menu_root" name="Hello World" sequence="10"/>
+    <menuitem id="hello_world_menu_action" name="Messages" 
+              parent="hello_world_menu_root" action="hello_world_action"/>
+</odoo>
